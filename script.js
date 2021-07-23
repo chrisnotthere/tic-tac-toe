@@ -1,4 +1,4 @@
-//store gameboard as array inside gameBoard object (module)
+// (MODULE) store gameboard as array inside gameBoard object 
 const gameBoard = (() => {
     let gameArray = [   'x', 'o', 'o',
                         'o', 'x', 'x', 
@@ -6,12 +6,14 @@ const gameBoard = (() => {
 
     const getGameArray = () => gameArray;
 
-    return{getGameArray};
+    const setGameArray = (newArray) => gameArray = newArray;
+
+    return{getGameArray, setGameArray};
 
 })();
 
 
-//players to be stored in objects (factory)
+// (FACTORY) players to be stored in objects 
 const player = (playerName) => {
     const getName = () => playerName;
 
@@ -20,8 +22,8 @@ const player = (playerName) => {
 };
 
 
-//create object to control flow of the game (module)
-//manipulates the DOM to show the current game state
+
+// (MODULE) manipulates the DOM to show the current game state
 const displayController = (() => {
 
     testDisplay = document.querySelector('h2');
@@ -41,3 +43,16 @@ const displayController = (() => {
     return{render};
 
 })();
+
+
+
+//function that allows player to add mark to the board on click
+//(cannot add to a spot already taken)
+//
+//player
+//  func addMark -> calls getGameArray adds mark to the array inside gameBoard
+//                  then calls setGameArray to 'update' the change
+//                  and then renders the array to screen
+
+
+
