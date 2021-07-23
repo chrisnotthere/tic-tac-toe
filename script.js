@@ -1,13 +1,10 @@
 
 // (FACTORY) players to be stored in objects 
-    const player = (playerName, mark) => {
+    const player = (playerName) => {
     const getName = () => playerName;
     const getMark = () => mark;
 
-    //const setName = () => 
-
     return {getName, getMark};
-
 };
 
 // (MODULE) store gameboard as array inside gameBoard object 
@@ -17,8 +14,8 @@ const gameBoard = (() => {
                         '', '', '',];
 
     const display = document.querySelector('h2');
-    const p1 = player('p1', 'x');
-    const p2 = player('p2', '0');
+    const p1 = player('p1');
+    const p2 = player('p2');
     let turn = 0;
     let marker;
     const winConditions = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [6,4,2]];
@@ -54,7 +51,6 @@ const gameBoard = (() => {
         displayController.incTurn();            //incerement turn var in displayController module
         gameArray = getGameArray();
         gameArray.splice(index, 1, marker);      //add x mark to game array
-        //console.log(blocks[index]);
         blocks[index].classList.add('occupied');
         console.log(gameArray);
 
@@ -74,8 +70,6 @@ const gameBoard = (() => {
             )
         });
     };
-
-
 
     const checkPlayerWin = (playerMark) => {
 
@@ -116,13 +110,8 @@ const displayController = (() => {
             index++
         });
 
-        console.log(gameBoard.checkPlayerWin('x'));
-        console.log(gameBoard.checkPlayerWin('o'));
         //everytime rendered, check if there is a winner
-        //turn++;
-        console.log(turn);
         displayWinner();
-
     }
 
     const displayWinner = () => {
@@ -140,7 +129,6 @@ const displayController = (() => {
             console.log('game over');
             return;
         };
-
     };
     
     const restartBtn = document.querySelector('button[id="restart"]');
@@ -154,32 +142,7 @@ const displayController = (() => {
 
     });
 
-
-
-
     return{render, displayWinner, incTurn};
 
 })();
 
-//build win condition logic
-//add start/restart game function, attach to restart button
-//allow players to edit names
-//
-//
-//see below for answer
-//
-// There's actually an "all" function built into javascript already, as long as you're not supporting IE8 or below; it's called every. There's a similar function called some, which returns true if the given predicate is true for any element of the array instead of all of them.
-
-// You can combine every and some to get a rather nice solution:
-
-// var winConditions = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [6,4,2]];
-
-// function playerWins(playerMark) {
-//     return winConditions.some(function(threeInARow) {
-//         return threeInARow.every(function(square) {
-//             return board[square] === playerMark;
-//         });
-//     });
-// }
-
-// var xWins = playerWins('X');

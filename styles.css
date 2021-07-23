@@ -12,6 +12,10 @@
       color: #ffa3a3;
     }
 
+    h2#winner{
+      margin: 2rem;
+    }
+
   .container {
     min-height: 100vh;
     display: flex;
