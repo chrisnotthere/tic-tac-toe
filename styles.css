@@ -1,9 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    /* box-sizing: border-box; */
     font-family: Arial, Helvetica, sans-serif;
-    /* font-size: 1.5rem; */
   }
 
   h1{
@@ -12,9 +10,9 @@
       color: #ffa3a3;
     }
 
-    h2#winner{
-      margin: 2rem;
-    }
+  h2#winner{
+    margin: 2rem;
+  }
 
   .container {
     min-height: 100vh;
@@ -42,6 +40,14 @@
     color: white;
   }
 
+  #restart{
+    display: none;
+  }
+
+  #start{
+    display: block;
+  }
+
   .grid {
     display: grid;
     width: 300px;
@@ -59,8 +65,7 @@
     font-size: 3rem;
     font-weight: bold;
     border: 1px solid black;
-    transition: background 0.2s ease-in-out;
-    /* border-radius: 0.2rem; */
+    transition: 0.2s ease-in-out;
   }
   
 .block:hover {
